@@ -85,8 +85,8 @@ StateBase:AddLabel( { id = "header", 			path = "Content/Fonts/NotoSans-Bold.ttf"
 	local y = 160
 	local inc = 65
 	
-	local nomo = self.name
-	if ( nomo == "" ) then nomo = "Name" end
+	local nomo = GLOBAL_CONFIG.NAME
+	if ( nomo == "" or nomo == nil ) then nomo = "Name" end
 	StateBase:AddLabel( { id = "Name", 			path = "Content/Fonts/NotoSans-Bold.ttf",		
 		pos_x = x, pos_y = y, color = 0xFFFFFF, size = 20, text = GameText:Get( "helper", "Name" ), centered = false } )
 		

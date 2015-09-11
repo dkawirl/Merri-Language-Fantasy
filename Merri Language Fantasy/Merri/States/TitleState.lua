@@ -36,19 +36,42 @@ function TitleState:Setup( options )
 	StateBase:AddLabel( { id = "title", 			path = "Content/Fonts/NotoSans-Bold.ttf",		pos_x = 10, pos_y = 140, color = 0xFFFFFF, size = 20, text = GameText:Get( "target", "game title" ), centered = true } )
 	StateBase:AddBitmap( { id = "bg", 	path = "Content/Graphics/UI/bg_titlescene.png",  pos_x = 0, pos_y = 160 } )
 	
+	local contentPath = "Content/Graphics/Characters/"
 	self.textures = {
-		character1 = Texture.new( "Content/Games/Miner/Characters/miner_left.png" ),
-		character2 = Texture.new( "Content/Games/Miner/Characters/miner_left2.png" ),
+	
 		snail = Texture.new( "Content/Games/Miner/Characters/enemy_snail.png" ),
+		
+		west1 = {
+				base = Texture.new( contentPath .. "base/base" .. GLOBAL_CONFIG.BASE .. "_left1.png" ),
+				hair = Texture.new( contentPath .. "hair/hair" .. GLOBAL_CONFIG.HAIR .. "_left1.png" ),
+				face = Texture.new( contentPath .. "face/face" .. GLOBAL_CONFIG.FACE .. "_left1.png" ),
+				outfit = Texture.new( contentPath .. "clothes/outfit" .. GLOBAL_CONFIG.OUTFIT .. "_left1.png" ),
+			},
+		west2 = {
+				base = Texture.new( contentPath .. "base/base" .. GLOBAL_CONFIG.BASE .. "_left2.png" ),
+				hair = Texture.new( contentPath .. "hair/hair" .. GLOBAL_CONFIG.HAIR .. "_left2.png" ),
+				face = Texture.new( contentPath .. "face/face" .. GLOBAL_CONFIG.FACE .. "_left2.png" ),
+				outfit = Texture.new( contentPath .. "clothes/outfit" .. GLOBAL_CONFIG.OUTFIT .. "_left2.png" ),
+			},
 	}
 	
-	self.bitmaps = {}
-	self.bitmaps.player = Bitmap.new( self.textures.character1 )
-	self.bitmaps.player:setPosition( 600, 300 )
-	self.bitmaps.player:setScale( 4, 4 )
-	self.bitmaps.snail = Bitmap.new( self.textures.snail )
-	self.bitmaps.snail:setScale( 4, 4 )
-	self.bitmaps.snail:setPosition( 400, 300 )
+	self.frame = 1
+	
+	self.players = {
+		base = Bitmap.new( self.textures.west1.base ),
+		hair = Bitmap.new( self.textures.west1.hair ),
+		face = Bitmap.new( self.textures.west1.face ),
+		outfit = Bitmap.new( self.textures.west1.outfit ),
+		}
+	
+	for key, image in pairs( self.players ) do
+		image:setPosition( 600, 325 )
+		image:setScale( 4, 4 )
+	end
+	
+	self.snail = Bitmap.new( self.textures.snail )
+	self.snail:setScale( 4, 4 )
+	self.snail:setPosition( 400, 300 )
 	
 	self.animationCounter = 0
 		
@@ -56,17 +79,22 @@ function TitleState:Setup( options )
 end
 
 function TitleState:Cleanup()
-	for key, value in pairs( self.bitmaps ) do 
+	for key, value in pairs( self.players ) do 
 		if ( stage:contains( value ) ) then stage:addChild( value ) end
 	end
+	
+	stage:removeChild( self.snail )
 end
 
 function TitleState:Draw()
 	StateBase:Draw()
 	
-	for key, value in pairs( self.bitmaps ) do 
-		stage:addChild( value )
-	end
+	stage:addChild( self.players.base )
+	stage:addChild( self.players.face )
+	stage:addChild( self.players.hair )
+	stage:addChild( self.players.outfit )
+	
+	stage:addChild( self.snail )
 end
 
 -- Cyclical --
@@ -89,6 +117,7 @@ function TitleState:Handle_MouseDown( event )
 	elseif ( clickedButton == "btn_help" ) then 
 	
 	elseif ( clickedButton == "btn_options" ) then
+		StateBase:SetGotoState( "CharacterCreatorState" ) -- temp
 	
 	end
 end
@@ -97,23 +126,32 @@ function TitleState:Handle_EnterFrame( event )
 	StateBase:Update()
 	self.animationCounter = self.animationCounter + 1
 	
+	local direction = "west"
+	
 	if ( self.animationCounter == 20 ) then
-		self.bitmaps.player:setTexture( self.textures.character2 )
+		self.frame = 2
 	
 	elseif ( self.animationCounter == 40 ) then
 		self.animationCounter = 0
-		self.bitmaps.player:setTexture( self.textures.character1 )
+		self.frame = 1
 		
 	end
 	
-	local x, y = self.bitmaps.player:getPosition()
+	self.players.base:setTexture( self.textures[ direction .. self.frame ].base )
+	self.players.hair:setTexture( self.textures[ direction .. self.frame ].hair )
+	self.players.face:setTexture( self.textures[ direction .. self.frame ].face )
+	self.players.outfit:setTexture( self.textures[ direction .. self.frame ].outfit )
+	
+	local x, y = self.players.base:getPosition()
 	x = x - 2
 	if ( x < -200 ) then
 		x = 600
 	end
 	
-	self.bitmaps.player:setPosition( x, y )
-	self.bitmaps.snail:setPosition( x - 200, y )
+	for key, image in pairs( self.players ) do
+		image:setPosition( x, y )
+	end
+	self.snail:setPosition( x - 200, y - 15 )
 	
 end
 
