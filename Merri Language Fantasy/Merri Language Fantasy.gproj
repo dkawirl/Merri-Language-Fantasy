@@ -185,7 +185,14 @@
   <folder name="Graphics">
    <folder name="Characters">
     <folder name="clothes">
-     <file source="Content/Graphics/Characters/clothes/outfit1-color1.png"/>
+     <file source="Content/Graphics/Characters/clothes/outfit0_down1.png"/>
+     <file source="Content/Graphics/Characters/clothes/outfit0_down2.png"/>
+     <file source="Content/Graphics/Characters/clothes/outfit0_left1.png"/>
+     <file source="Content/Graphics/Characters/clothes/outfit0_left2.png"/>
+     <file source="Content/Graphics/Characters/clothes/outfit0_right1.png"/>
+     <file source="Content/Graphics/Characters/clothes/outfit0_right2.png"/>
+     <file source="Content/Graphics/Characters/clothes/outfit0_up1.png"/>
+     <file source="Content/Graphics/Characters/clothes/outfit0_up2.png"/>
     </folder>
     <folder name="face">
      <file source="Content/Graphics/Characters/face/face0_down1.png"/>
@@ -262,14 +269,6 @@
      <file source="Content/Graphics/Characters/face/face8_up2.png"/>
     </folder>
     <folder name="hair">
-     <file source="Content/Graphics/Characters/hair/hair12_up2.png"/>
-     <file source="Content/Graphics/Characters/hair/hair12_up1.png"/>
-     <file source="Content/Graphics/Characters/hair/hair12_right2.png"/>
-     <file source="Content/Graphics/Characters/hair/hair12_right1.png"/>
-     <file source="Content/Graphics/Characters/hair/hair12_left2.png"/>
-     <file source="Content/Graphics/Characters/hair/hair12_left1.png"/>
-     <file source="Content/Graphics/Characters/hair/hair12_down2.png"/>
-     <file source="Content/Graphics/Characters/hair/hair12_down1.png"/>
      <file source="Content/Graphics/Characters/hair/hair0_down1.png"/>
      <file source="Content/Graphics/Characters/hair/hair0_down2.png"/>
      <file source="Content/Graphics/Characters/hair/hair0_left1.png"/>
@@ -294,6 +293,14 @@
      <file source="Content/Graphics/Characters/hair/hair11_right2.png"/>
      <file source="Content/Graphics/Characters/hair/hair11_up1.png"/>
      <file source="Content/Graphics/Characters/hair/hair11_up2.png"/>
+     <file source="Content/Graphics/Characters/hair/hair12_down1.png"/>
+     <file source="Content/Graphics/Characters/hair/hair12_down2.png"/>
+     <file source="Content/Graphics/Characters/hair/hair12_left1.png"/>
+     <file source="Content/Graphics/Characters/hair/hair12_left2.png"/>
+     <file source="Content/Graphics/Characters/hair/hair12_right1.png"/>
+     <file source="Content/Graphics/Characters/hair/hair12_right2.png"/>
+     <file source="Content/Graphics/Characters/hair/hair12_up1.png"/>
+     <file source="Content/Graphics/Characters/hair/hair12_up2.png"/>
      <file source="Content/Graphics/Characters/hair/hair1_down1.png"/>
      <file source="Content/Graphics/Characters/hair/hair1_down2.png"/>
      <file source="Content/Graphics/Characters/hair/hair1_left1.png"/>

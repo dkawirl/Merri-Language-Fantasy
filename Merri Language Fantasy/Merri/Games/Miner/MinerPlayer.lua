@@ -1,22 +1,78 @@
 MinerPlayer = Core.class()
 
 function MinerPlayer:init( options )
-	self.textures = {}
-	self.textures.south1 = Texture.new( "Content/Games/Miner/Characters/miner_down.png" )
-	self.textures.south2 = Texture.new( "Content/Games/Miner/Characters/miner_down2.png" )
-	self.textures.north1 = Texture.new( "Content/Games/Miner/Characters/miner_up.png" )
-	self.textures.north2 = Texture.new( "Content/Games/Miner/Characters/miner_up2.png" )
-	self.textures.east1 = Texture.new( "Content/Games/Miner/Characters/miner_right.png" )
-	self.textures.east2 = Texture.new( "Content/Games/Miner/Characters/miner_right2.png" )
-	self.textures.west1 = Texture.new( "Content/Games/Miner/Characters/miner_left.png" )
-	self.textures.west2 = Texture.new( "Content/Games/Miner/Characters/miner_left2.png" )
-	self.bitmap = Bitmap.new( self.textures.south1 )
+	local contentPath = "Content/Graphics/Characters/"
+	
+	self.textures = {
+		south1 = {
+				base = Texture.new( contentPath .. "base/base" .. GLOBAL_CONFIG.BASE .. "_down1.png" ),
+				hair = Texture.new( contentPath .. "hair/hair" .. GLOBAL_CONFIG.HAIR .. "_down1.png" ),
+				face = Texture.new( contentPath .. "face/face" .. GLOBAL_CONFIG.FACE .. "_down1.png" ),
+				outfit = Texture.new( contentPath .. "clothes/outfit" .. GLOBAL_CONFIG.OUTFIT .. "_down1.png" ),
+			},
+		south2 = {
+				base = Texture.new( contentPath .. "base/base" .. GLOBAL_CONFIG.BASE .. "_down2.png" ),
+				hair = Texture.new( contentPath .. "hair/hair" .. GLOBAL_CONFIG.HAIR .. "_down2.png" ),
+				face = Texture.new( contentPath .. "face/face" .. GLOBAL_CONFIG.FACE .. "_down2.png" ),
+				outfit = Texture.new( contentPath .. "clothes/outfit" .. GLOBAL_CONFIG.OUTFIT .. "_down2.png" ),
+			},
+			
+		north1 = {
+				base = Texture.new( contentPath .. "base/base" .. GLOBAL_CONFIG.BASE .. "_up1.png" ),
+				hair = Texture.new( contentPath .. "hair/hair" .. GLOBAL_CONFIG.HAIR .. "_up1.png" ),
+				face = Texture.new( contentPath .. "face/face" .. GLOBAL_CONFIG.FACE .. "_up1.png" ),
+				outfit = Texture.new( contentPath .. "clothes/outfit" .. GLOBAL_CONFIG.OUTFIT .. "_up1.png" ),
+			},
+		north2 = {
+				base = Texture.new( contentPath .. "base/base" .. GLOBAL_CONFIG.BASE .. "_up2.png" ),
+				hair = Texture.new( contentPath .. "hair/hair" .. GLOBAL_CONFIG.HAIR .. "_up2.png" ),
+				face = Texture.new( contentPath .. "face/face" .. GLOBAL_CONFIG.FACE .. "_up2.png" ),
+				outfit = Texture.new( contentPath .. "clothes/outfit" .. GLOBAL_CONFIG.OUTFIT .. "_up2.png" ),
+			},
+			
+		west1 = {
+				base = Texture.new( contentPath .. "base/base" .. GLOBAL_CONFIG.BASE .. "_left1.png" ),
+				hair = Texture.new( contentPath .. "hair/hair" .. GLOBAL_CONFIG.HAIR .. "_left1.png" ),
+				face = Texture.new( contentPath .. "face/face" .. GLOBAL_CONFIG.FACE .. "_left1.png" ),
+				outfit = Texture.new( contentPath .. "clothes/outfit" .. GLOBAL_CONFIG.OUTFIT .. "_left1.png" ),
+			},
+		west2 = {
+				base = Texture.new( contentPath .. "base/base" .. GLOBAL_CONFIG.BASE .. "_left2.png" ),
+				hair = Texture.new( contentPath .. "hair/hair" .. GLOBAL_CONFIG.HAIR .. "_left2.png" ),
+				face = Texture.new( contentPath .. "face/face" .. GLOBAL_CONFIG.FACE .. "_left2.png" ),
+				outfit = Texture.new( contentPath .. "clothes/outfit" .. GLOBAL_CONFIG.OUTFIT .. "_left2.png" ),
+			},
+			
+		east1 = {
+				base = Texture.new( contentPath .. "base/base" .. GLOBAL_CONFIG.BASE .. "_right1.png" ),
+				hair = Texture.new( contentPath .. "hair/hair" .. GLOBAL_CONFIG.HAIR .. "_right1.png" ),
+				face = Texture.new( contentPath .. "face/face" .. GLOBAL_CONFIG.FACE .. "_right1.png" ),
+				outfit = Texture.new( contentPath .. "clothes/outfit" .. GLOBAL_CONFIG.OUTFIT .. "_right1.png" ),
+			},
+		east2 = {
+				base = Texture.new( contentPath .. "base/base" .. GLOBAL_CONFIG.BASE .. "_right2.png" ),
+				hair = Texture.new( contentPath .. "hair/hair" .. GLOBAL_CONFIG.HAIR .. "_right2.png" ),
+				face = Texture.new( contentPath .. "face/face" .. GLOBAL_CONFIG.FACE .. "_right2.png" ),
+				outfit = Texture.new( contentPath .. "clothes/outfit" .. GLOBAL_CONFIG.OUTFIT .. "_right2.png" ),
+			},
+		}
+		
+	self.bitmaps = {
+		base = Bitmap.new( self.textures.south1.base ),
+		hair = Bitmap.new( self.textures.south1.hair ),
+		face = Bitmap.new( self.textures.south1.face ),
+		outfit = Bitmap.new( self.textures.south1.outfit ),
+		}
+		
+	print( GLOBAL_CONFIG.HAIR_R, GLOBAL_CONFIG.HAIR_G, GLOBAL_CONFIG.HAIR_B, GLOBAL_CONFIG.HAIR_A )
+	self.bitmaps.hair:setColorTransform( GLOBAL_CONFIG.HAIR_R, GLOBAL_CONFIG.HAIR_G, GLOBAL_CONFIG.HAIR_B, GLOBAL_CONFIG.HAIR_A )
+	
 	self.moveAmount = options.moveAmount
 	self.frame = 1
 	self.direction = "south"
 	self.health = 3
 	
-	self.label = TextField.new( MinerGameState.fonts.overhead, GameText:Get( "target", "Miner" ) )
+	self.label = TextField.new( MinerGameState.fonts.overhead, GLOBAL_CONFIG.NAME )
 	self.label:setTextColor( 0xFFFFFF )
 	
 	MinerPlayer.hp = options.hp
@@ -25,6 +81,22 @@ function MinerPlayer:init( options )
 	self.exp = 0
 	self.level = 1
 	self.hurtCooldown = 0
+end
+
+function MinerPlayer:Draw()
+	stage:addChild( self.bitmaps.base )
+	stage:addChild( self.bitmaps.face )
+	stage:addChild( self.bitmaps.hair )
+	stage:addChild( self.bitmaps.outfit )
+	stage:addChild( self.label )
+end
+
+function MinerPlayer:UpdateSprite()
+	local frame = math.floor( self.frame )
+	self.bitmaps.base:setTexture( self.textures[ self.direction .. frame ].base )
+	self.bitmaps.hair:setTexture( self.textures[ self.direction .. frame ].hair )
+	self.bitmaps.face:setTexture( self.textures[ self.direction .. frame ].face )
+	self.bitmaps.outfit:setTexture( self.textures[ self.direction .. frame ].outfit )
 end
 
 function MinerPlayer:Face( direction )
@@ -83,18 +155,16 @@ function MinerPlayer:Move( direction, amount )
 	self:setPosition( x, y )
 end
 
-function MinerPlayer:Draw()
-	stage:addChild( self.bitmap )
-	stage:addChild( self.label )
-end
-
 function MinerPlayer:setPosition( x, y )
-	self.bitmap:setPosition( x, y )
+	for key, bitmap in pairs( self.bitmaps ) do
+		bitmap:setPosition( x, y )
+	end
+	
 	self.label:setPosition( x, y )
 end
 
 function MinerPlayer:getPosition()
-	return self.bitmap:getPosition()
+	return self.bitmaps.base:getPosition()
 end
 
 function MinerPlayer:Update()
@@ -104,6 +174,7 @@ function MinerPlayer:Update()
 			self.frame = 1
 		end
 		local fr = math.floor( self.frame )
-		self.bitmap:setTexture( self.textures[ self.direction .. fr ] )
+		
+		self:UpdateSprite()
 	end
 end

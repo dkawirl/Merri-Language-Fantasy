@@ -70,7 +70,7 @@ function CharacterCreatorState:SetupAppearanceMenu()
 	self.bitmaps.face:setScale( 2 )
 	self.bitmaps.face:setPosition( characterX, characterY )
 	
-	self.bitmaps.clothes = Bitmap.new( Texture.new( "Content/Graphics/Characters/clothes/outfit1-color1.png" ) )
+	self.bitmaps.clothes = Bitmap.new( Texture.new( "Content/Graphics/Characters/clothes/outfit0_down1.png" ) )
 	self.bitmaps.clothes:setScale( 2 )
 	self.bitmaps.clothes:setPosition( characterX, characterY )
 	
@@ -303,19 +303,21 @@ function CharacterCreatorState:Handle_MouseDown_Appearance( event, clickedButton
 		self:ScrollBase( 1 )
 
 	elseif ( clickedButton == "btn_save" ) then
-		GLOBAL_CONFIG.PRONOUN 	= self.pronoun
-		GLOBAL_CONFIG.NAME 				= self.name
-		GLOBAL_CONFIG.BASE	 			= self.baseCode
-		GLOBAL_CONFIG.HAIR	 			= self.hairCode
-		GLOBAL_CONFIG.HAIR_R			= self.colorSets[ self.hairColorCode ].r
-		GLOBAL_CONFIG.HAIR_G			= self.colorSets[ self.hairColorCode ].g
-		GLOBAL_CONFIG.HAIR_B			= self.colorSets[ self.hairColorCode ].b
-		GLOBAL_CONFIG.HAIR_A			= self.colorSets[ self.hairColorCode ].a
-		GLOBAL_CONFIG.FACE	 			= self.faceCode
-		
-		SAVE_CONFIG()
-		
-		StateBase:SetGotoState( "TitleState" )		
+		if ( self.pronoun == "" or self.pronoun == nil ) then
+		else
+			GLOBAL_CONFIG.PRONOUN 	= self.pronoun
+			GLOBAL_CONFIG.NAME 				= self.name
+			GLOBAL_CONFIG.BASE	 			= self.baseCode
+			GLOBAL_CONFIG.HAIR	 			= self.hairCode
+			GLOBAL_CONFIG.HAIR_R			= self.colorSets[ self.hairColorCode ].r
+			GLOBAL_CONFIG.HAIR_G			= self.colorSets[ self.hairColorCode ].g
+			GLOBAL_CONFIG.HAIR_B			= self.colorSets[ self.hairColorCode ].b
+			GLOBAL_CONFIG.HAIR_A			= self.colorSets[ self.hairColorCode ].a
+			GLOBAL_CONFIG.FACE	 			= self.faceCode
+			GLOBAL_CONFIG.OUTFIT 			= 0
+			SAVE_CONFIG()			
+			StateBase:SetGotoState( "TitleState" )
+		end
 	end
 	
 	self:UpdateSprite()

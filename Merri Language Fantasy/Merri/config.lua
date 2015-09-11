@@ -9,6 +9,11 @@ GLOBAL_CONFIG = {
 	BASE = nil,
 	HAIR = nil,
 	FACE = nil,
+	OUTFIT = nil,
+	HAIR_R = nil,
+	HAIR_G = nil,
+	HAIR_B = nil,
+	HAIR_A = nil,
 }
 
 GLOBAL_LANGAUGES = { "English", "Esperanto", "Ido", "Spanish", "Ithkuil", "German", "Polish", "Japanese" }
@@ -47,6 +52,11 @@ function CLEAR_CONFIG()
 	CONFIG_WRITETOFILE( destFile, "		BASE = nil," )
 	CONFIG_WRITETOFILE( destFile, "		FACE = nil," )
 	CONFIG_WRITETOFILE( destFile, "		HAIR = nil," )
+	CONFIG_WRITETOFILE( destFile, "		OUTFIT = nil," )
+	CONFIG_WRITETOFILE( destFile, "		HAIR_R = nil," )
+	CONFIG_WRITETOFILE( destFile, "		HAIR_G = nil," )
+	CONFIG_WRITETOFILE( destFile, "		HAIR_B = nil," )
+	CONFIG_WRITETOFILE( destFile, "		HAIR_A = nil," )
 	CONFIG_WRITETOFILE( destFile, "	}" )
 	CONFIG_WRITETOFILE( destFile, "	return game_data" )	
 	CONFIG_WRITETOFILE( destFile, "end" )
@@ -105,6 +115,9 @@ function SAVE_CONFIG()
 	
 	if ( GLOBAL_CONFIG.HAIR ~= nil ) then  			
 	CONFIG_WRITETOFILE( destFile, "		HAIR = " .. GLOBAL_CONFIG.HAIR .. "," ) else print( "Skip HAIR" ) end
+	
+	if ( GLOBAL_CONFIG.OUTFIT ~= nil ) then  			
+	CONFIG_WRITETOFILE( destFile, "		OUTFIT = " .. GLOBAL_CONFIG.OUTFIT .. "," ) else print( "Skip OUTFIT" ) end
 	
 	
 	CONFIG_WRITETOFILE( destFile, "	}" )
