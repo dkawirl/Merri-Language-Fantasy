@@ -29,6 +29,7 @@ function SetupEnglish()
     helper[ "help" ]                    = "Help"                -- Get help / instructions for a game or function
     helper[ "menu" ]                    = "Menu"                -- Open up sub-menu screen
     helper[ "close-menu" ]              = "Back"                -- Close sub-menu
+	helper[ "back" ]							= "Back"
     helper[ "progress" ]                = "Progress"            -- Progress / Statistics menu
     helper[ "save" ]                    = "Save"                -- Save changes
 	helper[ "cancel" ]                  = "Cancel"

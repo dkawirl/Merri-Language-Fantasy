@@ -12,6 +12,7 @@ stateManager:AddState( "MinerShopState", MinerShopState.new() )
 stateManager:AddState( "AnimalBattleState", AnimalBattleState.new() )
 
 GameText:Setup()
+--CLEAR_CONFIG()
 LOAD_CONFIG()
 if ( GLOBAL_CONFIG.HELPER_LANGUAGE == nil and GLOBAL_CONFIG.TARGET_LANGUAGE == nil ) then
 	stateManager:ChangeState( "LanguageSelectState" )
