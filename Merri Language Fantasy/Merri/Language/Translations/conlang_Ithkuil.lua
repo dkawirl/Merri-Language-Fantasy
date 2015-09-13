@@ -35,11 +35,11 @@ function SetupIthkuil()
         
     -- MAIN MENU BUTTONS
     target[ "play" ]                    = "Ováweš"              -- Button to begin the game
-    target[ "previous" ]                = ""                    -- Go backward one page (one menu)
-    target[ "next" ]                    = ""                    -- Go forward one page (one menu)
+    target[ "previous" ]                = "Rçawel"                    -- Go backward one page (one menu)
+    target[ "next" ]                    = "Ultárunš"                    -- Go forward one page (one menu)
     target[ "options" ]                 = "Ênyar"             -- Configure options in a game
     target[ "help" ]                    = "Âdnan"                -- Get help / instructions for a game or function
-    target[ "menu" ]                    = ""                -- Open up sub-menu screen
+    target[ "menu" ]                    = "Ênyarinš"                -- Open up sub-menu screen
     target[ "close-menu" ]              = "Rçarļ"                -- Close sub-menu
     target[ "back" ] = target[ "close-menu" ]                   -- Ignore this
     target[ "progress" ]                = ""                    -- Progress / Statistics menu
@@ -83,7 +83,7 @@ function SetupIthkuil()
     target[ "bat" ]                     = "Ftçal"
     target[ "rabbit" ]                  = "Lxwal"
     target[ "snake" ]                   = "Knal"
-    target[ "skeleton" ]                = "Urp'al eqel"
+    target[ "skeleton" ]                = "Eiqairp'alo"
     target[ "moose" ]                   = "Ndwal"
     
     -- Items
@@ -102,21 +102,21 @@ function SetupIthkuil()
     
     -- Shopkeeper Dialogue
     target[ "Do you want to buy a tool?" ]    = "Ebawul ki čeil?"
-    target[ "You don't have enough money" ]   = ""
+    target[ "You don't have enough money" ]   = "Spalir to"
     
     -- Button options
-    target[ "Don't buy anything" ]      = "" -- Click to leave the store, nobody is saying this line it is a button.
-    target[ "Price" ]                   = "Îmsawur:"              -- Price label
+    target[ "Don't buy anything" ]      = "Spalir" -- Click to leave the store, nobody is saying this line it is a button.
+    target[ "Price" ]                   = "Îmsar:"              -- Price label
     
     -- Item names and descriptions
-    target[ "Potion" ]                  = "Ôgral kâ"              -- Restores health
-    target[ "PotionDescription" ]       = ""
-    target[ "Earthquake" ]              = "Erţkwaekpar"
-    target[ "EarthquakeDescription" ]   = ""
+    target[ "Potion" ]                  = "Ôgral tâ"              -- Restores health
+    target[ "PotionDescription" ]       = "Iglalač tu"
+    target[ "Earthquake" ]              = "Perţkwaekpar"
+    target[ "EarthquakeDescription" ]   = "Italir tiļ tie"
     target[ "Dynamite" ]                = "Xčálrak"
-    target[ "DynamiteDescription" ]     = ""
+    target[ "DynamiteDescription" ]     = "Ejal"
     target[ "Rope" ]                    = "Öxpál"
-    target[ "RopeDescription" ]         = ""
+    target[ "RopeDescription" ]         = "Jal"
     target[ "Blizzard" ]                = "Uţwálûk"
     target[ "BlizzardDescription" ]     = ""
     
@@ -125,13 +125,13 @@ function SetupIthkuil()
     target[ "miner-move-north" ]        = "Ku gwal osroar."
     target[ "miner-move-south" ]        = "Ku gwal ösroar."
     target[ "miner-move-east" ]         = "Ku gwal öcmoar."
-    target[ "miner-move-west" ]         = ""
+    target[ "miner-move-west" ]         = "Ku gwal ocmoar."
     target[ "miner-mine" ]              = "Čel obval kî ko"
     target[ "miner-eat-sandwich" ]      = "Čmel gral ko"
-    target[ "use-earthquake" ]          = ""
-    target[ "use-blizzard" ]            = "" 
+    target[ "use-earthquake" ]          = "Perţkwaekpair"
+    target[ "use-blizzard" ]            = "Uţwaílûk" 
     target[ "enemies-thaw" ]            = ""
-    target[ "use-potion" ]              = ""
+    target[ "use-potion" ]              = "Uglailir ôgral kâ"
     target[ "miner-collect-copper" ]    = "Xhtel ômrar ko"
     target[ "miner-collect-silver" ]    = "Rqel ômrar ko"
     target[ "miner-collect-gold" ]      = "Xrel ômrar ko"
@@ -147,11 +147,11 @@ function SetupIthkuil()
     target[ "miner-attack-rabbit" ]     = "Lxwel fřál ko"
     target[ "miner-attack-snake" ]      = "Knel fřál ko"
     target[ "miner-attack-moose" ]      = "Ndwel fřál ko"
-    target[ "miner-attack-skeleton" ]   = "Urp'al eqel fřál ko"
-    target[ "miner-go-down-ladder" ]    = ""
-    target[ "miner-rope" ]              = ""
+    target[ "miner-attack-skeleton" ]   = "Eiqairp'elo fřál ko"
+    target[ "miner-go-down-ladder" ]    = "Ejal ti"
+    target[ "miner-rope" ]              = "Expál ko"
     target[ "miner-dynamite" ]          = ""
-    target[ "miner-died" ]              = ""
+    target[ "miner-died" ]              = "Italir ti"
     
 	return helper, target    
 end
